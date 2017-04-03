@@ -1,25 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GM : MonoBehaviour {
-    public int lives;
+    private int _Lives = 3;
     public int points;
-    private Vector3 startingPosition;
     public GameObject gameOver; 
     public GameObject youWin;
-    public UnityEngine.UI.Text livesValue;
-    public UnityEngine.UI.Text pointsValue;
+    public Text livesValue;
+    public Text pointsValue;
     public float deadZone = -3.2f;
 
-    void Start ()
-    {
-        startingPosition = transform.position;
-        livesValue.text = lives.ToString();
-    }
+    
     public void SetLives(int newValue)
     {
-        lives = newValue;
+        _Lives = newValue;
+        Debug.Log("Lives now equals:" + _Lives);
+        livesValue.text = _Lives.ToString();
+    }
+    public int GetLives()
+    {
+        return _Lives;
     }
     void Update ()
     {
@@ -30,13 +32,7 @@ public class GM : MonoBehaviour {
     }
     void GetOut ()
     {
-        Debug.Log("You are out");
-        lives = lives - 20;
-        livesValue.text = lives.ToString();
-        transform.position = startingPosition;
-        GetComponent<Rigidbody2D>().velocity = new Vector2();
-
-        if(lives == 0)
+        if(_Lives == 0)
         {
             DoGameOver();
         }
