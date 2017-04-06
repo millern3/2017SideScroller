@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GM : MonoBehaviour {
     private int _Lives = 3;
-    public int points;
+    private int _Points;
     public GameObject gameOverSign; 
     public GameObject youWin;
     public Text livesValue;
@@ -27,9 +27,13 @@ public class GM : MonoBehaviour {
     {
         return _Lives;
     }
-    public void CoinCollected (int worth)
+   public void SetPoints(int newValue)
     {
-        points += worth;
-        pointsValue.text = points.ToString();
+        _Points = newValue;
+        pointsValue.text = _Points.ToString();
+    }
+    public int GetPoints()
+    {
+        return _Points;
     }
 }
