@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    public int Strength = 2;
+    public int points = 1;
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        var player = coll.gameObject.GetComponent<player>();
-        if (player != null)
+        var player = coll.gameObject.GetComponent<Player>();
+        if (player != null);
         {
             gameObject.SetActive(false);
-            FindObjectOfType<GM>().SetPoints(FindObjectOfType<GM>().GetPoints() + 1);
+            FindObjectOfType<GM>().SetPoints(FindObjectOfType<GM>().GetPoints() + points);
         }
     }
 }
