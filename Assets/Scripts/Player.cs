@@ -11,6 +11,8 @@ public class Player : MonoBehaviour {
     private Vector3 startingPosition;
     private Animator anim;
     public bool air;
+    public bool canFly = false;
+
 
 
     new Rigidbody2D rigidbody;
@@ -43,7 +45,7 @@ public class Player : MonoBehaviour {
             anim.SetBool("Running", false);
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && (v.y == 0 || canFly) ) 
         {
             v.y = jumpSpeed;
         }
