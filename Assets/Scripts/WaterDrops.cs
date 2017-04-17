@@ -13,4 +13,20 @@ public class WaterDrops : MonoBehaviour {
 	void Update () {
 		
 	}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var player = collision.gameObject.GetComponent<Player>();
+        if(player != null)
+        {
+            player.canFly = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        var player = collision.gameObject.GetComponent<Player>();
+        if (player != null)
+        { 
+            player.canFly = false;
+        }
+    }
 }
