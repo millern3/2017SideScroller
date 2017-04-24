@@ -15,6 +15,7 @@ public class WaterDrops : MonoBehaviour {
 	}
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("EnterWater");
         var player = collision.gameObject.GetComponent<Player>();
         if(player != null)
         {
@@ -23,6 +24,7 @@ public class WaterDrops : MonoBehaviour {
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        Debug.Log("ExitWater");
         var player = collision.gameObject.GetComponent<Player>();
         if (player != null)
         { 
