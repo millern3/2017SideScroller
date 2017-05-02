@@ -18,9 +18,7 @@ public class Bomb : Throwable {
     }
 
     public void Explode()
-    {
-        Debug.Log("Expoloding");
-        // Get reference to all enemies
+    { // Get reference to all enemies
         var enemies = FindObjectsOfType<Enemy>();
 
         // Loop through each enemy in list

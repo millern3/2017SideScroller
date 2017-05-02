@@ -18,7 +18,7 @@ public class Player : MonoBehaviour {
 
     new Rigidbody2D rigidbody;
     GM _GM;
-    
+
 
     // Use this for initialization
     void Start () {
@@ -82,17 +82,16 @@ public class Player : MonoBehaviour {
             GetOut();
         }
 
-       //rigidbody.velocity = new Vector2(x * speed, rigidbody.velocity.y);
-       // rigidbody.AddForce(new Vector2(x * speed, 0));
-		
-	}
+        //rigidbody.velocity = new Vector2(x * speed, rigidbody.velocity.y);
+        // rigidbody.AddForce(new Vector2(x * speed, 0));
+    }
     public void GetOut()
     {
         _GM.SetLives(_GM.GetLives() - 1);
         transform.position = startingPosition;
         Debug.Log("You're Out");
     }
-
+   
     public void PowerUp(){
         anim.SetTrigger("Powered");
     }
@@ -111,5 +110,20 @@ public class Player : MonoBehaviour {
         air = true;
     }
 
-
+    //Moveable Platform
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.transform.tag == "MovingPlatform")
+        {
+            transform.parent = other.transform;
+        }
+    }
+    void OnCollisionLeave2D(Collision2D other)
+    {
+        if (other.transform.tag == "MovingPlatform")
+        {
+            transform.parent = null;
+        }
+    }
 }
+
