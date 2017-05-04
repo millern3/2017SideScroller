@@ -66,7 +66,7 @@ public class StunGrenade: Throwable {
     
         for (int i = 0; i < 11; i++) //i++ is same as i = i + 1
         {
-            renderer.color = new Color(1, 1, 1, 1 - (i * .1f));
+            renderer.color = new Color(1, 1, 1, i * .1f);
             yield return new WaitForSeconds(.3f);
         }
         if (animator != null)
