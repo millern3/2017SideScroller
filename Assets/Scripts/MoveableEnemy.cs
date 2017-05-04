@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveableEnemy: Enemy {
+public class MoveableEnemy: Enemy  {
 
     public LayerMask enemyMask;
     public float speed;
@@ -10,8 +10,8 @@ public class MoveableEnemy: Enemy {
     Transform Trans;
     float Width;
 
-	// Use this for initialization
-	void Start ()
+// Use this for initialization
+void Start ()
     {
         Trans = this.transform;
         Body = this.GetComponent<Rigidbody2D>();
@@ -20,7 +20,7 @@ public class MoveableEnemy: Enemy {
 	
 	// Update is called once per frame
 	void Update ()
-    {
+    { 
         Vector2 lineCastPos = Trans.position - Trans.right * Width;
 
         bool isGrounded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down, enemyMask);

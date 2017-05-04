@@ -104,26 +104,29 @@ public class Player : MonoBehaviour {
             weapon.GetPickedUp(this);
             currentWeapon = weapon;
         }
+        //MoveablePlatform
+        if (coll.transform.tag == "MoveablePlatform")
+        {
+            transform.parent = coll.transform;
+        }
     }
     void OnCollisionExit2D(Collision2D coll)
     {
         air = true;
-    }
-
-    //Moveable Platform
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.transform.tag == "MovingPlatform")
-        {
-            transform.parent = collision.transform;
-        }
-    }
-    void OnCollisionLeave2D(Collision2D collision)
-    {
-        if (collision.transform.tag == "MovingPlatform")
+        if (coll.transform.tag == "MoveablePlatform")
         {
             transform.parent = null;
         }
     }
+
+    //Moveable Platform
+   // void OnCollisionStay2D(Collision2D collision)
+    //{
+      //  if (collision.transform.tag == "MoveablePlatform")
+        //{
+          //  transform.parent = collision.transform;
+        //}
+    //}
+   
 }
 
