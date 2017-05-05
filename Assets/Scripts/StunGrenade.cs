@@ -35,7 +35,7 @@ public class StunGrenade: Throwable {
             //check if enemy is in bomb radius
             if (Vector3.Distance(this.transform.position, e.transform.position) < Strength) //homework line
             {
-                // Set that enemby to Not-Active
+                // Set that enemy to Not-Active
                 StartCoroutine(Stun(e));
 
             }

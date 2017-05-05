@@ -11,6 +11,9 @@ public class Player : MonoBehaviour {
     public bool air;
     public bool canFly = false;
     public Weapon currentWeapon;
+    //WeaponShoot
+    public Transform firePoint;
+    public GameObject Bullet;
 
     private SpriteRenderer sr;
     private Vector3 startingPosition;
@@ -18,6 +21,7 @@ public class Player : MonoBehaviour {
 
     new Rigidbody2D rigidbody;
     GM _GM;
+    private bool grounded;
 
 
     // Use this for initialization
@@ -104,7 +108,18 @@ public class Player : MonoBehaviour {
             weapon.GetPickedUp(this);
             currentWeapon = weapon;
         }
-        //MoveablePlatform
+        int move = 0;
+        //MoveablePlatform 
+        if (move != 0 && transform.parent != null) 
+        {
+            GetComponent<Rigidbody2D>().isKinematic = false;
+            transform.parent = null;
+        }
+        if ((grounded) && Input.GetKeyDown(KeyCode.Space))
+        {
+            GetComponent<Rigidbody2D>().isKinematic = false;
+            transform.parent = null;
+        }
         if (coll.transform.tag == "MoveablePlatform")
         {
             transform.parent = coll.transform;
@@ -117,16 +132,10 @@ public class Player : MonoBehaviour {
         {
             transform.parent = null;
         }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Instantiate(Bullet, firePoint.position, firePoint.rotation);
+        }
     }
-
-    //Moveable Platform
-   // void OnCollisionStay2D(Collision2D collision)
-    //{
-      //  if (collision.transform.tag == "MoveablePlatform")
-        //{
-          //  transform.parent = collision.transform;
-        //}
-    //}
-   
 }
 
