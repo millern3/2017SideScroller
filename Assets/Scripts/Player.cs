@@ -18,13 +18,12 @@ public class Player : MonoBehaviour {
     private SpriteRenderer sr;
     private Vector3 startingPosition;
     private Animator anim;
+    private bool grounded;
 
     new Rigidbody2D rigidbody;
     GM _GM;
-    private bool grounded;
 
-
-    // Use this for initialization
+  //for initialization
     void Start () {
         startingPosition = transform.position;
         rigidbody = GetComponent<Rigidbody2D>();
@@ -42,37 +41,38 @@ public class Player : MonoBehaviour {
         Vector2 v = rigidbody.velocity;
         v.x = x * speed;
 
-        if (v.x != 0)
-        {
-            anim.SetBool("Running", true);
-        }
-        else
-        {
-            anim.SetBool("Running", false);
-        }
+            if (v.x != 0)
+            {
+                anim.SetBool("Running", true);
+            }
+            else
+            {
+                anim.SetBool("Running", false);
+            }
 
-        if (v.x > 0)
-        {
-            sr.flipX = false;
-        }
-        else if (v.x < 0)
-        {
-            sr.flipX = true;
-        }
+            if (v.x > 0)
+            {
+                sr.flipX = false;
+            }
+            else if (v.x < 0)
+            {
+                sr.flipX = true;
+            }
 
-        if (Input.GetButtonDown("Jump") && (v.y == 0 || canFly) )
-        { 
-            v.y = jumpSpeed;
-        }
-        if (v.y != 0)
-        {
-            anim.SetBool("Air", true);
-        }
-        else
-        {
-            anim.SetBool("Air", false);
-        }
-
+            if (Input.GetButtonDown("Jump") && (v.y == 0 || canFly))
+            {
+                v.y = jumpSpeed;
+            }
+            if (v.y != 0)
+            {
+                anim.SetBool("Air", true);
+            }
+            else
+            {
+                anim.SetBool("Air", false);
+            }
+        
+    
         rigidbody.velocity = v;
 
         //Attack with a weapon if you have one

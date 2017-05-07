@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,5 +33,10 @@ public class Bomb : Throwable {
             }
         }
         gameObject.SetActive(false);
+    }
+
+    internal void Explode(int damageToGive)
+    {
+        throw new NotImplementedException();
     }
 }

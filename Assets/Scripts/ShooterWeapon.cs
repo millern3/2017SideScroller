@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ShooterWeapon : MonoBehaviour {
 
-    public float speed;
+    public Vector2 velocity;
     public Player player;
-    public Rigidbody projectile;
-	
+    public GameObject projectile;
+    bool canShoot = true;
+    public float speed;
+
     // Use this for initialization
-	void Start () {
+    void Start()
+    {
         player = FindObjectOfType<Player>();
 
         if (player.transform.localScale.x < 0)
@@ -19,20 +22,15 @@ public class ShooterWeapon : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-           Rigidbody instantiateProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
-           new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
-
-        }
+        GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
     }
-        void OnTriggerEnter2D(Collider2D other)
-        {
-
+    void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.tag == "Enemy")
-          {
-             Destroy(other.gameObject);
-          }
+        {
+            Destroy(other.gameObject);
+        }
         Destroy(gameObject);
+
     }
 }

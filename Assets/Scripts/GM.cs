@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GM : MonoBehaviour {
-    private int _Lives = 3;
+    public int _Lives = 3;
     private int _Points;
     public GameObject gameOverSign; 
     public GameObject youWin;
