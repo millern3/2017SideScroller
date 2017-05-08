@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        Destroy(this.gameObject, 10);
         rb = GetComponent< Rigidbody2D > ();
         velocity = rb.velocity;
     
@@ -23,7 +24,7 @@ public class Bullet : MonoBehaviour {
             rb.velocity = velocity;
         }	
 	}
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         rb.velocity = new Vector2(velocity.x, -velocity.y);
 
