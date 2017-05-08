@@ -76,7 +76,7 @@ public class Player : MonoBehaviour {
         rigidbody.velocity = v;
 
         //Attack with a weapon if you have one
-        if (Input.GetButtonDown("Fire1") && currentWeapon !=null)
+        if (Input.GetKeyDown(KeyCode.F) && currentWeapon !=null)
         {
            currentWeapon.Attack();
         }

@@ -8,29 +8,29 @@ public class ShooterWeapon : MonoBehaviour {
     public Player player;
     public GameObject projectile;
     bool canShoot = true;
-    public float speed;
+    public Vector2 offset = new Vector2(0.4f, 0.1f);
+    public float wait = 1f;
+
 
     // Use this for initialization
     void Start()
     {
-        player = FindObjectOfType<Player>();
 
-        if (player.transform.localScale.x < 0)
-            speed = -speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
-    }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Enemy")
+        if (Input.GetKeyDown(KeyCode.S) && canShoot)
         {
-            Destroy(other.gameObject);
+            GameObject gameObject = (GameObject)Instantiate(projectile, (Vector2)transform.position + offset * transform.localScale.x, Quaternion.identity);
+                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
         }
-        Destroy(gameObject);
-
+    }
+    IEnumerator CanShoot()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(wait);
+        canShoot = true;
     }
 }

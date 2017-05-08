@@ -2,12 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StunPlayer : MonoBehaviour
+public class StunPlayer : Player
 {
-    IEnumerator Stun(Player player)
-    {
-        player.enabled = false;
-        yield return new WaitForSeconds(5);
-        player.enabled = true;
-    }
+
 }
