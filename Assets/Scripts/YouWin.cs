@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YouWin : MonoBehaviour {
+public class YouWin : GM {
 
     public GameObject youWin;
 

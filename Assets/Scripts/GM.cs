@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GM : MonoBehaviour {
     public int _Lives = 3;
     private int _Points;
+    public GameObject youWin;
     public GameObject gameOverSign; 
     public Text livesValue;
     public Text pointsValue;
