@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShooterWeapon : MonoBehaviour {
+public class ShooterWeapon : Weapon {
 
     public Vector2 velocity;
     public Player player;
