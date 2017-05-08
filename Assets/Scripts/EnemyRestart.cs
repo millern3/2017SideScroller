@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class EnemyRestart : MonoBehaviour
 {
-    private Vector3 startingPosition;
+    public Player player;
 
-    void OnCollisionEnter2D(Collision2D coll)
+    public GameObject Respawn;
+    
+    void Start()
     {
-        if (!enabled)
-        {
-            return;
-        }
+     
     }
-    public void Restart()
+        void OnCollisionEnter2D(Collision2D coll)
     {
-        transform.position = startingPosition;
+        if (enabled)
+        {
+           player.transform.position = Respawn.transform.position;
+        }
+        
     }
 }

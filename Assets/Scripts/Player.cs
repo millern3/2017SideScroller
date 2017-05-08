@@ -89,7 +89,7 @@ public class Player : MonoBehaviour {
             int i = (weapons.IndexOf(currentWeapon) + 1) % weapons.Count; // % is remainder of number (modulo)
             SetCurrentWeapon(weapons[i]);
         }
-            //Check for out
+        //Check for out
             if (transform.position.y < deadZone)
         {
             GetOut();
@@ -168,6 +168,11 @@ public class Player : MonoBehaviour {
         {
             Instantiate(Bullet, firePoint.position, firePoint.rotation);
         }
+    }
+    //Respawn player
+    public void RespawnPlayer()
+    {
+        Debug.Log("PlayerRespawn");
     }
 }
 

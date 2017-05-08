@@ -7,7 +7,6 @@ public class GM : MonoBehaviour {
     public int _Lives = 3;
     private int _Points;
     public GameObject gameOverSign; 
-    public GameObject youWin;
     public Text livesValue;
     public Text pointsValue;
 
@@ -23,15 +22,18 @@ public class GM : MonoBehaviour {
             gameOverSign.SetActive(true);
         }
     }
+
     public int GetLives()
     {
         return _Lives;
     }
+
    public void SetPoints(int newValue)
     {
         _Points = newValue;
         pointsValue.text = _Points.ToString();
     }
+
     public int GetPoints()
     {
         return _Points;
