@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour {
     {
         rb.velocity = new Vector2(velocity.x, -velocity.y);
 
-        var enemy = collision.gameObject.GetComponent<Enemy>();
+        
         if (collision.collider.tag == "Deadly")
         {
             Destroy(collision.gameObject);

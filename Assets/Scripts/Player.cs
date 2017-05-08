@@ -10,8 +10,11 @@ public class Player : MonoBehaviour {
     public float deadZone = -3;
     public bool air;
     public bool canFly = false;
+
+    //Weapon in class
     public Weapon currentWeapon;
-    //WeaponShoot
+    private List<Weapon> weapons = new List<Weapon>();
+    //WeaponShootEgg
     public Transform firePoint;
     public GameObject Bullet;
 
@@ -76,12 +79,18 @@ public class Player : MonoBehaviour {
         rigidbody.velocity = v;
 
         //Attack with a weapon if you have one
-        if (Input.GetKeyDown(KeyCode.F) && currentWeapon !=null)
+        if (Input.GetButtonDown("Fire1") && currentWeapon !=null)
         {
            currentWeapon.Attack();
         }
-        //Check for out
-        if (transform.position.y < deadZone)
+        //Change weapon
+        if (Input.GetButtonDown("Fire2") && currentWeapon != null)
+        {
+            int i = (weapons.IndexOf(currentWeapon) + 1) % weapons.Count; // % is remainder of number (modulo)
+            SetCurrentWeapon(weapons[i]);
+        }
+            //Check for out
+            if (transform.position.y < deadZone)
         {
             GetOut();
         }
@@ -99,6 +108,29 @@ public class Player : MonoBehaviour {
     public void PowerUp(){
         anim.SetTrigger("Powered");
     }
+   
+    //Funciton to add new weapon and set current weapon
+    public void AddWeapon(Weapon w)
+    {
+        weapons.Add(w);
+        SetCurrentWeapon(w);
+    }
+    public void SetCurrentWeapon (Weapon w)
+    {
+        if(currentWeapon != null)
+        {
+            currentWeapon.gameObject.SetActive(false);
+        }
+
+        currentWeapon = w;
+
+        if (currentWeapon != null)
+        {
+            currentWeapon.gameObject.SetActive(true);
+        }
+
+    }
+
     void OnCollisionEnter2D(Collision2D coll)
     {
         air = false;
@@ -106,7 +138,7 @@ public class Player : MonoBehaviour {
         if (weapon != null)
         {
             weapon.GetPickedUp(this);
-            currentWeapon = weapon;
+          
         }
         int move = 0;
         //MoveablePlatform 
