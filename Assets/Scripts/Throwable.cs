@@ -10,7 +10,7 @@ public class Throwable : Weapon {
     {
         collider2D.enabled = true;
         rigidbody2D.isKinematic = false;
-        rigidbody2D.velocity = new Vector2(5, 0);
+        rigidbody2D.velocity = new Vector2(10, 2);
         transform.parent = null;
     }
     public override void GetPickedUp(Player player)
